@@ -48,7 +48,7 @@ for (counter in c(1,2,3))
 }
 
 
-### nu ook een trend line fitten
+### trend line
 #linetype <- c(3,2,1)
 linet <- c(3,6,2)
 
@@ -95,10 +95,10 @@ legend("topleft", inset=.02, legend=c("Screen", "AR HUD", "Physical","Proximal A
 
 with(tb,summary(aov(actual_matchedangle~condition*as.factor(proxangs)+Error(as.factor(participant)/(condition*as.factor(proxangs))))))
 
-### let op: ik heb viewing height nu ook als factor genomen. Dus 150 cm is niet 5 keer zoveel als 30 cm.
+### viewing height as factor
 
 
-### also calculate means and SDs per condition (I have not done that now)
+### also calculate means and SDs per condition
 with(tb,tapply(actual_matchedangle,condition,mean,stdev))
 
 Prows<-agTb[(which(agTb$condition=="P")),]
@@ -118,23 +118,6 @@ radiansindegree<-0.0174532925
 degreesinradian<-57.2957795
 h<-c(0:280)/100
 #lines(atan(1/h)*degreesinradian*2,col="black",lty="dotted")
-
-### Text die in artikel kan staan (ik weet even niet alle namen zo snel, dus af en toe een letter waar een woord moet staan). In plaats van "condition" is het beter als je een inhoudelijke term hebt. "Condition" is ambigu. Is het "View type" (standing or sitting?)
-## A 2 (condition: P or S) x 4 (viewingheight) repeated measures ANOVA found a main effect of condition, F(1, 9) = 88.03, p < .0001. Viewing angle was heigher in S (M = 81.3 degrees, SD = ...) compared to P (M = 44 degrees, SD = ...). There was also a main effect of viewing height, F(3,27) = 143, p < .0001. In Figure XX it can be seen that both conditions have a downward slope: matched angle decreases with an increase of viewing height.
-
-### deze zin is wel heel belangrijk. Let op: ik gebruik hier de 95% CIs om te redeneren over waar wel en niet verschillen zijn. Het patroon is erg "in your face" duidelijk door de CIs (en losse punten)
-### These main effect were also affected by an interaction effect between condition and viewing height, F(3, 27) = 25.32, p < .0001. As Figure XX illustrates, the interaction pattern is that in the S condition (blue) the matched angle increases with a decrease in viewing angle. By contrast, in the P condition (grey), there seems to be less or no effect of viewing height on the matched angle, as indicated by the strong overlap between the 95% confidence intervals.
-
-
-
-### alternatief voor zin over main effect van vieuwing height:
-### deze zin wellicht weglaten, maar voor zekerheid toegevoegd: (standaard is om bij "interactie effect" niet de hoofdeffecten te veel te interpreteren)
-#Holm-corrected post-hoc test showed that all angles differed significantly from each other, with the exception of the 117 and 132 conditions.
-
-
-
-### Zodra je ook de data hebt van de rode conditie kun je ook daarvan de slope en intercept uitrekenen. Ideaal gezien lijken die slope en intercept dan heel erg op elkaar. Zie boven voor heo ik slope en intercept uitreken.
-
 
 ### Plotting the expected angle
 radiansindegree<-0.0174532925
